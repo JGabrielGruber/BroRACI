@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
-import { Avatar, IconButton } from '@material-ui/core';
+import { Avatar, IconButton, Tooltip } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,17 +24,20 @@ export default function AccountAvatar({
 	const classes = useStyles();
 
 	return (
-		<IconButton onClick={() => onClick()}>
-			{
-				state === 'HAS_IMAGE' ? (
-					<Avatar alt={name} src={image} />
-				) : (
-					<Avatar alt={name} className={classes.blue}>
-						{name.substring(0, 1)}
-					</Avatar>
-				)
-			}
-		</IconButton>
+		<Tooltip title={name} onClick={() => onClick()}>
+			<IconButton>
+				{
+					state === 'HAS_IMAGE' ? (
+						<Avatar alt={name} src={image} />
+					) : (
+						<Avatar alt={name} className={classes.blue}>
+							{name.substring(0, 1)}
+						</Avatar>
+					)
+				}
+			</IconButton>
+		</Tooltip>
+
 	);
 }
 
