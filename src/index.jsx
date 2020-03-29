@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/Root.component';
 import * as serviceWorker from './serviceWorker';
 
-render(
+ReactDOM.render(
 	<Root />,
 	document.getElementById('root'),
 );
