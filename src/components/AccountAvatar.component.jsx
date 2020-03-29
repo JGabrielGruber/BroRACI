@@ -24,10 +24,10 @@ export default function AccountAvatar({
 	const classes = useStyles();
 
 	return (
-		<IconButton>
+		<IconButton onClick={() => onClick()}>
 			{
 				state === 'HAS_IMAGE' ? (
-					<Avatar alt={name} src={image} onClick={() => onClick()} />
+					<Avatar alt={name} src={image} />
 				) : (
 					<Avatar alt={name} className={classes.blue}>
 						{name.substring(0, 1)}
