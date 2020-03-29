@@ -23,19 +23,28 @@ export default function AccountAvatar({
 }) {
 	const classes = useStyles();
 
+	const avatar = state === 'HAS_IMAGE' ? (
+		<Avatar alt={name} src={image} />
+	) : (
+		<Avatar alt={name} className={classes.blue}>
+			{name.substring(0, 1)}
+		</Avatar>
+	);
+
 	return (
-		<Tooltip title={name} onClick={() => onClick()}>
-			<IconButton>
-				{
-					state === 'HAS_IMAGE' ? (
-						<Avatar alt={name} src={image} />
-					) : (
-						<Avatar alt={name} className={classes.blue}>
-							{name.substring(0, 1)}
-						</Avatar>
-					)
-				}
-			</IconButton>
+		<Tooltip title={name} onClick={onClick ? () => onClick() : null}>
+			{onClick ? (
+				<IconButton>
+					{avatar}
+				</IconButton>
+			) : (
+				<span>
+					<IconButton disabled>
+						{avatar}
+					</IconButton>
+				</span>
+			)}
+
 		</Tooltip>
 
 	);
@@ -47,7 +56,7 @@ AccountAvatar.defaultProps = {
 		image: '',
 		state: '',
 	},
-	onClick: () => {},
+	onClick: null,
 };
 
 AccountAvatar.propTypes = {
