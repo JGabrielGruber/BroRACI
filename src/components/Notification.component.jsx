@@ -9,7 +9,7 @@ export default function Notification({
 	onClick,
 }) {
 	return (
-		<Tooltip title="Notificações" onClick={() => onClick()}>
+		<Tooltip title="Notificações" onClick={onClick}>
 			<IconButton>
 				{
 					amount > 0 ? (

@@ -42,7 +42,7 @@ export default function TopBar({
 					<div />
 				) : (
 					<Grid container alignItems="center" className={classes.root}>
-						<IconButton edge="start" color="inherit" aria-label="menu" onClick={() => onSideMenu()}>
+						<IconButton edge="start" color="inherit" aria-label="menu" onClick={onSideMenu}>
 							<MenuIcon />
 						</IconButton>
 						<Grid item>
@@ -58,19 +58,19 @@ export default function TopBar({
 							account={
 								{ name: 'Fazer Log-In', image: '', state: 'HAS_IMAGE' }
 							}
-							onClick={() => onLogin()}
+							onClick={onLogin}
 						/>
 					) : (
 						<Grid className={classes.root}>
 							<OnlineUsers users={users} />
 							<Divider orientation="vertical" variant="middle" flexItem />
-							<IconButton onClick={() => onSearch()}>
+							<IconButton onClick={onSearch}>
 								<SearchIcon fontSize="large" />
 							</IconButton>
 							<Notification amount={amountNotifications} onClick={onNotification} />
 							<AccountAvatar
 								account={account}
-								onClick={() => onAccount()}
+								onClick={onAccount}
 							/>
 						</Grid>
 					)}
