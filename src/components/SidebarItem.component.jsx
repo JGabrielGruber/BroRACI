@@ -11,8 +11,8 @@ export default function SidebarItem({
 		title,
 		key,
 		icon,
+		state,
 	},
-	state,
 	onClick,
 }) {
 	const color = state === 'SELECTED' ? 'primary' : 'inherit';
@@ -35,8 +35,8 @@ SidebarItem.defaultProps = {
 		title: '',
 		key: '',
 		icon: (<div />),
+		state: 'NOT_SELECTED',
 	},
-	state: 'NOT_SELECTED',
 	onClick: null,
 };
 
@@ -45,7 +45,7 @@ SidebarItem.propTypes = {
 		title: PropTypes.string.isRequired,
 		key: PropTypes.string.isRequired,
 		icon: PropTypes.object.isRequired,
+		state: PropTypes.string,
 	}),
-	state: PropTypes.string,
 	onClick: PropTypes.func.isRequired,
 };

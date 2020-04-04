@@ -24,4 +24,4 @@ export const actionsData = {
 
 export const Default = () => <SidebarItem item={{ ...itemData }} {...actionsData} />;
 
-export const Selected = () => <SidebarItem item={{ ...itemData}} state="SELECTED" {...actionsData} />;
+export const Selected = () => <SidebarItem item={{ ...itemData, state: 'SELECTED' }} {...actionsData} />;
