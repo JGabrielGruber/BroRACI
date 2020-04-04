@@ -23,3 +23,7 @@ export const Default = () => <AccountAvatar account={{ ...accountData }} {...act
 export const Image = () => (
 	<AccountAvatar account={{ ...accountData, image: '', state: 'HAS_IMAGE' }} {...actionsData} />
 );
+
+export const WithoutAction = () => (
+	<AccountAvatar account={{ ...accountData, image: '', state: 'HAS_IMAGE' }} />
+);

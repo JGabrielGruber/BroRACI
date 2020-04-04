@@ -32,7 +32,7 @@ export default function AccountAvatar({
 	);
 
 	return (
-		<Tooltip title={name} onClick={onClick ? () => onClick() : null}>
+		<Tooltip title={name} onClick={onClick || null}>
 			{onClick ? (
 				<IconButton>
 					{avatar}
