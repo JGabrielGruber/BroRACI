@@ -22,7 +22,7 @@ class AccountMenu extends React.Component {
 	render() {
 		const { matrices } = this.state;
 		const {
-			element, onClose, onAccount, onExit, open,
+			element, onClose, onAccount, onExit, onClick, open,
 		} = this.props;
 
 		return (
@@ -45,7 +45,14 @@ class AccountMenu extends React.Component {
 				<Divider />
 				{ matrices.length > 0 ? (
 					<div>
-						{ matrices.map((project) => (<MenuItem key={project.uid}>{project.title}</MenuItem>)) }
+						{ matrices.map((project) => (
+							<MenuItem
+								key={project.uid}
+								onClick={onClick}
+							>
+								{project.title}
+							</MenuItem>
+						)) }
 						<Divider />
 					</div>
 				) : (
@@ -68,6 +75,7 @@ AccountMenu.propTypes = {
 	onClose: PropTypes.func.isRequired,
 	onAccount: PropTypes.func.isRequired,
 	onExit: PropTypes.func.isRequired,
+	onClick: PropTypes.func.isRequired,
 	open: PropTypes.bool,
 	matrices: PropTypes.arrayOf(PropTypes.shape({
 		uid: PropTypes.string.isRequired,
