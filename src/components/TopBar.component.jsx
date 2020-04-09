@@ -57,7 +57,7 @@ export default function TopBar({
 					{stateLogin === 'NOT_LOGGED' ? (
 						<AccountAvatar
 							account={
-								{ name: 'Fazer Log-In', image: '', state: 'HAS_IMAGE' }
+								{ displayName: 'Fazer Log-In', photoUrl: '', state: 'HAS_IMAGE' }
 							}
 							onClick={onLogin}
 						/>

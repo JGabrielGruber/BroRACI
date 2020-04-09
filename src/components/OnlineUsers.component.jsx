@@ -19,7 +19,7 @@ export default function OnlineUsers({
 	return users || users.lenght === 0 ? (
 		<div className={classes.root}>
 			{users.map((user) => (
-				<AccountAvatar account={user} />
+				<AccountAvatar key={user.uid} account={user} />
 			))}
 		</div>
 	) : (<div />);

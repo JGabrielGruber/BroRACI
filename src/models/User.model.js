@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 
 const User = () => ({
-	_id: PropTypes.string,
+	uid: PropTypes.string,
 	displayName: PropTypes.string,
 	email: PropTypes.string,
 	photoUrl: PropTypes.string,
