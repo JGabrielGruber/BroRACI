@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-	Menu, MenuItem, Divider, Typography,
+	Menu, MenuItem, Divider,
 } from '@material-ui/core';
 
 class AccountMenu extends React.Component {
@@ -68,15 +68,16 @@ class AccountMenu extends React.Component {
 AccountMenu.defaultProps = {
 	open: false,
 	matrices: [],
+	onClick: () => {},
 };
 
 AccountMenu.propTypes = {
-	element: PropTypes.element.isRequired,
 	onClose: PropTypes.func.isRequired,
 	onAccount: PropTypes.func.isRequired,
 	onExit: PropTypes.func.isRequired,
-	onClick: PropTypes.func.isRequired,
+	onClick: PropTypes.func,
 	open: PropTypes.bool,
+	// eslint-disable-next-line react/no-unused-prop-types
 	matrices: PropTypes.arrayOf(PropTypes.shape({
 		uid: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,
