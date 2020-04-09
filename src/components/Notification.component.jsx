@@ -13,7 +13,7 @@ export default function Notification({
 			<IconButton>
 				{
 					amount > 0 ? (
-						<Badge max="9" badgeContent={amount} color="error">
+						<Badge max={9} badgeContent={amount} color="error">
 							<NotificationsNoneIcon fontSize="large" />
 						</Badge>
 					) : (
