@@ -36,6 +36,7 @@ export const OpenedWithMatrix = () => (
 		{...matrixData}
 		open
 		{...actionsData}
+		onClick={action('onClick')}
 	/>
 );
 
