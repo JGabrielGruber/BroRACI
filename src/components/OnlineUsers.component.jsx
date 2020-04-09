@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AccountAvatar from './AccountAvatar.component';
+import User from '../models/User.model';
 
 const useStyles = makeStyles(() => ({
 	root: {
@@ -29,9 +30,5 @@ OnlineUsers.defaultProps = {
 };
 
 OnlineUsers.propTypes = {
-	users: PropTypes.arrayOf(PropTypes.shape({
-		name: PropTypes.string.isRequired,
-		image: PropTypes.string,
-		state: PropTypes.string,
-	})),
+	users: PropTypes.arrayOf(PropTypes.shape(User)),
 };

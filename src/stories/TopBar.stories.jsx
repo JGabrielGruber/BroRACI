@@ -11,20 +11,20 @@ export default {
 };
 
 export const accountData = {
-	name: 'Testenaldo',
+	displayName: 'Testenaldo',
 };
 
 export const usersData = [
 	{
-		name: 'Josivaldo',
+		displayName: 'Josivaldo',
 	},
 	{
-		name: 'Oliandro da Cigarra',
-		image: '',
+		displayName: 'Oliandro da Cigarra',
+		photoUrl: '',
 		state: 'HAS_IMAGE',
 	},
 	{
-		name: 'Kowianha',
+		displayName: 'Kowianha',
 	},
 ];
 

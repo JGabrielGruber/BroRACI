@@ -11,7 +11,7 @@ export default {
 };
 
 export const accountData = {
-	name: 'Testenildo',
+	displayName: 'Testenildo',
 };
 
 export const actionsData = {
@@ -21,9 +21,9 @@ export const actionsData = {
 export const Default = () => <AccountAvatar account={{ ...accountData }} {...actionsData} />;
 
 export const Image = () => (
-	<AccountAvatar account={{ ...accountData, image: '', state: 'HAS_IMAGE' }} {...actionsData} />
+	<AccountAvatar account={{ ...accountData, photoUrl: '', state: 'HAS_IMAGE' }} {...actionsData} />
 );
 
 export const WithoutAction = () => (
-	<AccountAvatar account={{ ...accountData, image: '', state: 'HAS_IMAGE' }} />
+	<AccountAvatar account={{ ...accountData, photoUrl: '', state: 'HAS_IMAGE' }} />
 );

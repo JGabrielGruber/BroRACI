@@ -10,6 +10,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import AccountAvatar from './AccountAvatar.component';
 import OnlineUsers from './OnlineUsers.component';
 import Notification from './Notification.component';
+import User from '../models/User.model';
 
 const useStyles = makeStyles(() => ({
 	spacer: {
@@ -69,6 +70,7 @@ export default function TopBar({
 							</IconButton>
 							<Notification amount={amountNotifications} onClick={onNotification} />
 							<AccountAvatar
+								id="AccountMenuButton"
 								account={account}
 								onClick={onAccount}
 							/>
@@ -96,16 +98,8 @@ TopBar.defaultProps = {
 
 TopBar.propTypes = {
 	title: PropTypes.string,
-	account: PropTypes.shape({
-		name: PropTypes.string.isRequired,
-		image: PropTypes.string,
-		state: PropTypes.string,
-	}),
-	users: PropTypes.arrayOf(PropTypes.shape({
-		name: PropTypes.string.isRequired,
-		image: PropTypes.string,
-		state: PropTypes.string,
-	})),
+	account: PropTypes.shape(User),
+	users: PropTypes.arrayOf(PropTypes.shape(User)),
 	amountNotifications: PropTypes.number,
 	stateLogin: PropTypes.string,
 	onSideMenu: PropTypes.func,

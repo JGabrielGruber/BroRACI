@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
 import { Avatar, IconButton, Tooltip } from '@material-ui/core';
+import User from '../models/User.model';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -15,8 +16,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AccountAvatar({
 	account: {
-		name,
-		image,
+		displayName,
+		photoUrl,
 		state,
 	},
 	onClick,
@@ -24,15 +25,15 @@ export default function AccountAvatar({
 	const classes = useStyles();
 
 	const avatar = state === 'HAS_IMAGE' ? (
-		<Avatar alt={name} src={image} />
+		<Avatar alt={displayName} src={photoUrl} />
 	) : (
-		<Avatar alt={name} className={classes.blue}>
-			{name.substring(0, 1)}
+		<Avatar alt={displayName} className={classes.blue}>
+			{displayName.substring(0, 1)}
 		</Avatar>
 	);
 
 	return (
-		<Tooltip title={name} onClick={onClick || null}>
+		<Tooltip title={displayName} onClick={onClick || null}>
 			{onClick ? (
 				<IconButton>
 					{avatar}
@@ -52,18 +53,14 @@ export default function AccountAvatar({
 
 AccountAvatar.defaultProps = {
 	account: {
-		name: '',
-		image: '',
+		displayName: '',
+		photoUrl: '',
 		state: '',
 	},
 	onClick: null,
 };
 
 AccountAvatar.propTypes = {
-	account: PropTypes.shape({
-		name: PropTypes.string.isRequired,
-		image: PropTypes.string,
-		state: PropTypes.string,
-	}),
+	account: PropTypes.shape(User),
 	onClick: PropTypes.func,
 };
