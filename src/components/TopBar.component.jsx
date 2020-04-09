@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
-	Toolbar, IconButton, AppBar, Divider, Grid, Typography,
+	Toolbar, IconButton, AppBar, Divider, Grid, Typography, Fade,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -39,9 +39,7 @@ export default function TopBar({
 	return (
 		<AppBar color="transparent">
 			<Toolbar>
-				{isSideMenu === true ? (
-					<div />
-				) : (
+				<Fade in={!isSideMenu}>
 					<Grid container alignItems="center" className={classes.root}>
 						<IconButton edge="start" color="inherit" aria-label="menu" onClick={onSideMenu}>
 							<MenuIcon />
@@ -52,7 +50,7 @@ export default function TopBar({
 							</Typography>
 						</Grid>
 					</Grid>
-				)}
+				</Fade>
 				<Grid container direction="row-reverse">
 					{stateLogin === 'NOT_LOGGED' ? (
 						<AccountAvatar
