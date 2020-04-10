@@ -6,11 +6,11 @@ import {
 	Toolbar, IconButton, AppBar, Divider, Grid, Typography, Fade,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
 import AccountAvatar from './AccountAvatar.component';
 import OnlineUsers from './OnlineUsers.component';
 import Notification from './Notification.component';
 import User from '../models/User.model';
+import Search from './Search.component';
 
 const useStyles = makeStyles(() => ({
 	spacer: {
@@ -63,9 +63,7 @@ export default function TopBar({
 						<Grid className={classes.root}>
 							<OnlineUsers users={users} />
 							<Divider orientation="vertical" variant="middle" flexItem />
-							<IconButton onClick={onSearch}>
-								<SearchIcon fontSize="large" />
-							</IconButton>
+							<Search onChange={onSearch} />
 							<Notification amount={amountNotifications} onClick={onNotification} />
 							<AccountAvatar
 								id="AccountMenuButton"
