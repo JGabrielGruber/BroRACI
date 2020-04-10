@@ -49,6 +49,14 @@ class Login extends React.Component {
 		return false;
 	}
 
+	handleClose = (event) => {
+		event.preventDefault();
+		const { onClose } = this.props;
+		if (event.target.id === 'back-grid') {
+			onClose(event);
+		}
+	}
+
 	render() {
 		const { email, password, remember } = this.state;
 
@@ -67,7 +75,7 @@ class Login extends React.Component {
 				}}
 			>
 				<Fade in={open}>
-					<Grid container justify="center" alignItems="center" className={classes.root}>
+					<Grid id="back-grid" container justify="center" alignItems="center" className={classes.root} onClick={this.handleClose}>
 						<Container maxWidth="xs">
 							<Card>
 								<CardHeader
