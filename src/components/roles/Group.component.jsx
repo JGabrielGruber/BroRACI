@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-	Container, Button, Popover, List, ListItem, Grid, Typography, IconButton,
+	Container, Button, Popover, List, ListItem, Grid, Typography, IconButton, Fade, FormControl, InputLabel, Input, InputAdornment,
 } from '@material-ui/core';
 import ArrowDropDownRoundedIcon from '@material-ui/icons/ArrowDropDownRounded';
 import AddIcon from '@material-ui/icons/Add';
+import DoneRoundedIcon from '@material-ui/icons/DoneRounded';
+import ClearRoundedIcon from '@material-ui/icons/ClearRounded';
 
 import GroupModel from '../../models/Group.model';
 import GroupItem from './GroupItem.component';
@@ -17,7 +19,9 @@ class Group extends React.Component {
 
 		this.state = {
 			open: false,
+			isAdd: false,
 			element: null,
+			title: '',
 		};
 	}
 
@@ -27,6 +31,18 @@ class Group extends React.Component {
 			element: event.target,
 			open: !prevState.open,
 		}));
+	}
+
+	handleAdd = () => {
+		this.setState((prevState) => ({
+			isAdd: !prevState.isAdd,
+		}));
+	}
+
+	handleChange = (event) => {
+		this.setState({
+			[event.target.id]: event.target.value,
+		});
 	}
 
 	handleRemove = (event, group) => {
@@ -47,7 +63,7 @@ class Group extends React.Component {
 
 	render() {
 		const {
-			open, element,
+			open, isAdd, element, title,
 		} = this.state;
 
 		const {
@@ -82,7 +98,37 @@ class Group extends React.Component {
 								/>
 							</ListItem>
 						)) }
-						<ListItem key="add-group" button onClick={onAdd}>
+						{
+							isAdd ? (
+								<ListItem key="form-group">
+									<Fade in={isAdd}>
+										<Grid item>
+											<FormControl fullWidth>
+												<InputLabel>Grupo</InputLabel>
+												<Input
+													id="title"
+													value={title}
+													onChange={this.handleChange}
+													endAdornment={(
+														<InputAdornment position="end">
+															<IconButton onClick={this.handleAdd}>
+																<ClearRoundedIcon />
+															</IconButton>
+															<IconButton onClick={() => onAdd(title)}>
+																<DoneRoundedIcon />
+															</IconButton>
+														</InputAdornment>
+													)}
+												/>
+											</FormControl>
+										</Grid>
+									</Fade>
+								</ListItem>
+							) : (
+								<div />
+							)
+						}
+						<ListItem key="add-group" button onClick={this.handleAdd}>
 							<Grid
 								id="grid-group"
 								container
