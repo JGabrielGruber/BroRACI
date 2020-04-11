@@ -4,4 +4,5 @@ export default {
 	APP: 'App',
 	POPUP: 'Pop-Ups',
 	USERS: 'Users',
+	ROLES: 'Roles',
 };
