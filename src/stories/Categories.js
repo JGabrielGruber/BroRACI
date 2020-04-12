@@ -5,4 +5,5 @@ export default {
 	POPUP: 'Pop-Ups',
 	USERS: 'Users',
 	ROLES: 'Roles',
+	ACTIVITIES: 'Activities',
 };
