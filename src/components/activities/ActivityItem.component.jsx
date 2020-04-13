@@ -20,6 +20,10 @@ export default function ActivityItem({
 	onSelectStep,
 	index,
 }) {
+	const handleSelectStep = (step) => {
+		onSelectStep(activity, step);
+	};
+
 	return (
 		<Container maxWidth="md">
 			<Grid container direction="row" spacing={3} alignItems="center">
@@ -29,7 +33,7 @@ export default function ActivityItem({
 						steps={steps}
 						onAdd={onAddStep}
 						onRemove={onRemoveStep}
-						onSelect={onSelectStep}
+						onSelect={handleSelectStep}
 					/>
 				</Grid>
 				<Grid item xs>
