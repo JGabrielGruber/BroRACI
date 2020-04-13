@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/BroRACI/static/js/main.49ae9a17.chunk.js",
+    "main.js.map": "/BroRACI/static/js/main.49ae9a17.chunk.js.map",
+    "runtime-main.js": "/BroRACI/static/js/runtime-main.a79c79ec.js",
+    "runtime-main.js.map": "/BroRACI/static/js/runtime-main.a79c79ec.js.map",
+    "static/js/2.b925d645.chunk.js": "/BroRACI/static/js/2.b925d645.chunk.js",
+    "static/js/2.b925d645.chunk.js.map": "/BroRACI/static/js/2.b925d645.chunk.js.map",
+    "index.html": "/BroRACI/index.html",
+    "precache-manifest.67936d20dde86b95a4e84260858c7e56.js": "/BroRACI/precache-manifest.67936d20dde86b95a4e84260858c7e56.js",
+    "service-worker.js": "/BroRACI/service-worker.js",
+    "static/js/2.b925d645.chunk.js.LICENSE.txt": "/BroRACI/static/js/2.b925d645.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a79c79ec.js",
+    "static/js/2.b925d645.chunk.js",
+    "static/js/main.49ae9a17.chunk.js"
+  ]
+}
