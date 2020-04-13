@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Container } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
+import { Route, Switch } from 'react-router';
 import TopBar from './topbar/TopBar.component';
 import User from '../models/User.model';
 import AccountMenu from './topbar/AccountMenu.component';
@@ -10,6 +11,8 @@ import LoginComponent from './popups/Login.component';
 import SignupComponent from './popups/Signup.component';
 import RecoveryComponent from './popups/Recovery.component';
 import RACI from '../models/RACI.model';
+import UserControl from './users/UserControl.component';
+import UserControlContainer from '../containers/UserControlContainer.container';
 
 class App extends React.Component {
 	constructor(props) {
@@ -96,12 +99,10 @@ class App extends React.Component {
 
 	handlePhoto = (photo) => {
 		console.log(photo);
-		
 	}
 
 	handleRecovery = (recovery) => {
 		console.log(recovery);
-		
 	}
 
 	render() {
@@ -117,18 +118,29 @@ class App extends React.Component {
 
 		return (
 			<Container ref={this.accountMenuElementRef}>
-				<TopBar
-					account={user}
-					amountNotifications={amountNotification}
-					stateLogin={stateLogin}
-					title={raci.title}
-					users={raci.users}
-					onAccount={this.accountMenuHandler}
-					onLogin={this.loginHandler}
-					onNotification={this.notificationMenuHandler}
-					onSideMenu={this.sideMenuHandler}
-					isSideMenu={isSideMenuOpen}
-				/>
+				<Grid container direction="column" spacing={10}>
+					<Grid item>
+						<TopBar
+							account={user}
+							amountNotifications={amountNotification}
+							stateLogin={stateLogin}
+							title={raci.title}
+							users={raci.users}
+							onAccount={this.accountMenuHandler}
+							onLogin={this.loginHandler}
+							onNotification={this.notificationMenuHandler}
+							onSideMenu={this.sideMenuHandler}
+							isSideMenu={isSideMenuOpen}
+						/>
+					</Grid>
+					<Grid item>
+						<Switch>
+							<Route strict path="/:id/users">
+								<UserControlContainer users={raci.users} raci={raci} />
+							</Route>
+						</Switch>
+					</Grid>
+				</Grid>
 				<AccountMenu
 					element={accountMenuElement}
 					matrices={matrices}
@@ -195,7 +207,7 @@ App.propTypes = {
 	raci: PropTypes.shape(RACI),
 	onLogin: PropTypes.func.isRequired,
 	onSignup: PropTypes.func.isRequired,
-	onLogout:  PropTypes.func.isRequired,
+	onLogout: PropTypes.func.isRequired,
 };
 
 export default App;
