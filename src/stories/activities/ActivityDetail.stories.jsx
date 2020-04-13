@@ -3,12 +3,12 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 
 import Categories from '../Categories';
-import ActivityItem from '../../components/activities/ActivityItem.component';
+import ActivityDetail from '../../components/activities/ActivityDetail.component';
 import { assignmentsData, rulesData } from './UserGroup.stories';
 
 export default {
-	component: ActivityItem,
-	title: `${Categories.ACTIVITIES}/Activity Item`,
+	component: ActivityDetail,
+	title: `${Categories.ACTIVITIES}/Activity Detail`,
 	excludeStories: /.*Data$/,
 };
 
@@ -22,33 +22,29 @@ export const activityData = {
 	assignments: assignmentsData,
 };
 
-export const stepsData = [
+export const usersData = [
 	{
 		uid: 'aaa',
-		title: 'Inicio',
+		displayName: 'Testenaldo',
 	},
 	{
 		uid: 'bbb',
-		title: 'Esboço',
-	},
-	{
-		uid: 'ccc',
-		title: 'Conclusão',
+		displayName: 'Josivaldo',
 	},
 ];
 
 export const actionsData = {
-	onClick: action('onClick'),
-	onAddStep: action('onAddStep'),
-	onRemoveStep: action('onRemoveStep'),
-	onSelectStep: action('onSelectStep'),
+	onUpdate: action('onUpdate'),
+	onAddAssignment: action('onAddAssignment'),
+	onRemoveAssignment: action('onRemoveAssignment'),
+	onSelectAssignment: action('onSelectAssignment'),
 };
 
 export const Default = () => (
-	<ActivityItem
+	<ActivityDetail
 		activity={activityData}
-		steps={stepsData}
 		rules={rulesData}
+		users={usersData}
 		{...actionsData}
 	/>
 );
