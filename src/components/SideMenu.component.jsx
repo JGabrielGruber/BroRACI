@@ -12,9 +12,9 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 
-import ListSidebarItem from './ListSidebarItem.component';
 import { Grid, Container } from '@material-ui/core';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import ListSidebarItem from './ListSidebarItem.component';
 
 
 const useStyles = makeStyles(() => ({
@@ -26,8 +26,8 @@ const useStyles = makeStyles(() => ({
 	},
 }));
 
-export default function SideMenu ({
-	title, 
+export default function SideMenu({
+	title,
 	open,
 	funcs,
 	options,
@@ -35,37 +35,37 @@ export default function SideMenu ({
 	onSelectFuncs,
 	onSelectOptions,
 }) {
-	return(
-			<Drawer
+	return (
+		<Drawer
 			variant="persistent"
 			anchor="left"
 			open={open}
-			>
+		>
 			<Container>
-			<Grid alignItems="center" container direction="row" justify="space-between" spacing={2}>
-				<Grid item>
-				<Typography variant="h4">
-				{`${title}`}
-				</Typography>
+				<Grid alignItems="center" container direction="row" justify="space-between" spacing={2}>
+					<Grid item>
+						<Typography variant="h4">
+							{`${title}`}
+						</Typography>
+					</Grid>
+					<Grid>
+						<IconButton onClick={onClose}>
+							<ArrowBackIosIcon />
+						</IconButton>
+					</Grid>
 				</Grid>
-				<Grid>
-					<IconButton onClick={onClose}>
-						<ArrowBackIosIcon />
-					</IconButton>
-				</Grid>
-			</Grid>
 			</Container>
 			<Divider />
-			<ListSidebarItem 
-			{...funcs}
-			onClick={onSelectFuncs}
+			<ListSidebarItem
+				{...funcs}
+				onClick={onSelectFuncs}
 			/>
 			<Divider />
-			<ListSidebarItem 
-			{...options}
-			onClick={onSelectOptions}
-			/>			
-			</Drawer>
+			<ListSidebarItem
+				{...options}
+				onClick={onSelectOptions}
+			/>
+		</Drawer>
 	);
 }
 
@@ -78,7 +78,7 @@ SideMenu.propTypes = {
 	open: PropTypes.bool,
 	funcs: PropTypes.object,
 	options: PropTypes.object,
-	onClose: PropTypes.func, 
+	onClose: PropTypes.func,
 	onSelectFuncs: PropTypes.func,
 	onSelectOptions: PropTypes.func,
 };

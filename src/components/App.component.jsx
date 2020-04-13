@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Container, Grid } from '@material-ui/core';
-import { Route, Switch } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router';
+import { withRouter } from 'react-router-dom';
+
 import TopBar from './topbar/TopBar.component';
 import User from '../models/User.model';
 import AccountMenu from './topbar/AccountMenu.component';
@@ -15,6 +17,7 @@ import UserControl from './users/UserControl.component';
 import UserControlContainer from '../containers/UserControlContainer.container';
 import RolerControlContainer from '../containers/RoleControl.container';
 import ActivityControlContainer from '../containers/ActivityControl.container';
+import SideMenu from './SideMenu.component';
 
 class App extends React.Component {
 	constructor(props) {
@@ -107,6 +110,14 @@ class App extends React.Component {
 		console.log(recovery);
 	}
 
+	handleMenu = (obj) => {
+		const {
+			history, match,
+		} = this.props;
+
+		history.push(`/${match.params.raci}/${obj.key}`);
+	}
+
 	render() {
 		const {
 			accountMenuElement, notiticationMenuElement, isAccountMenuOpen,
@@ -179,6 +190,34 @@ class App extends React.Component {
 					onClose={() => {}}
 					onRecovery={this.handleRecovery}
 				/>
+				<SideMenu
+					open={isSideMenuOpen}
+					onClose={this.sideMenuHandler}
+					title={raci.title}
+					funcs={{
+						items: [
+							{
+								title: 'Lista',
+								key: 'activities',
+								icon: (<div />),
+								state: 'NOT_SELECTED',
+							},
+							{
+								title: 'Usuários',
+								key: 'users',
+								icon: (<div />),
+								state: 'NOT_SELECTED',
+							},
+							{
+								title: 'Cargos',
+								key: 'roles',
+								icon: (<div />),
+								state: 'NOT_SELECTED',
+							},
+						],
+					}}
+					onSelectFuncs={this.handleMenu}
+				/>
 			</Container>
 		);
 	}
@@ -212,6 +251,7 @@ App.propTypes = {
 	onLogin: PropTypes.func.isRequired,
 	onSignup: PropTypes.func.isRequired,
 	onLogout: PropTypes.func.isRequired,
+	isSideMenuOpen: PropTypes.bool,
 };
 
-export default App;
+export default withRouter(App);
