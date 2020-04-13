@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 
 import * as serviceWorker from './serviceWorker';
 import initializeFirebase from './configFirebase';
@@ -10,11 +10,11 @@ import AppContainer from './containers/App.container';
 initializeFirebase();
 
 ReactDOM.render(
-	<BrowserRouter>
+	<Router>
 		<Switch>
 			<Route path="/:raci?" component={AppContainer} />
 		</Switch>
-	</BrowserRouter>,
+	</Router>,
 	document.getElementById('root'),
 );
 
