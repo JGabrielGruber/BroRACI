@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import {
-	Container, Button, Popover, List, ListItem, Grid, Typography, IconButton, Fade, FormControl, InputLabel, Input, InputAdornment,
+	Container, Button, Popover, List, ListItem,
+	Grid, Typography, IconButton, Fade, FormControl,
+	InputLabel, Input, InputAdornment,
 } from '@material-ui/core';
 import ArrowDropDownRoundedIcon from '@material-ui/icons/ArrowDropDownRounded';
 import AddIcon from '@material-ui/icons/Add';

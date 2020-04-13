@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import { blue } from '@material-ui/core/colors';
 import { Avatar, IconButton, Tooltip } from '@material-ui/core';
-import User from '../models/User.model';
+import User from '../../models/User.model';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -18,13 +18,12 @@ export default function AccountAvatar({
 	account: {
 		displayName,
 		photoUrl,
-		state,
 	},
 	onClick,
 }) {
 	const classes = useStyles();
 
-	const avatar = state === 'HAS_IMAGE' ? (
+	const avatar = (photoUrl && photoUrl.lenght > 0) || displayName === '' ? (
 		<Avatar alt={displayName} src={photoUrl} />
 	) : (
 		<Avatar alt={displayName} className={classes.blue}>
@@ -54,8 +53,7 @@ export default function AccountAvatar({
 AccountAvatar.defaultProps = {
 	account: {
 		displayName: '',
-		photoUrl: '',
-		state: '',
+		photoUrl: null,
 	},
 	onClick: null,
 };

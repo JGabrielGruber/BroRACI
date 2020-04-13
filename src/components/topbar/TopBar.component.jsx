@@ -9,7 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import AccountAvatar from './AccountAvatar.component';
 import OnlineUsers from './OnlineUsers.component';
 import Notification from './Notification.component';
-import User from '../models/User.model';
+import User from '../../models/User.model';
 import Search from './Search.component';
 
 const useStyles = makeStyles(() => ({

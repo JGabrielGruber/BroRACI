@@ -2,11 +2,12 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
 
-import TopBar from '../components/TopBar.component';
+import Categories from '../Categories';
+import TopBar from '../../components/topbar/TopBar.component';
 
 export default {
 	component: TopBar,
-	title: 'TopBar',
+	title: `${Categories.TOPBAR}/Topbar`,
 	excludeStories: /.*Data$/,
 };
 

@@ -1,10 +1,11 @@
 import React from 'react';
 
-import OnlineUsers from '../components/OnlineUsers.component';
+import OnlineUsers from '../../components/topbar/OnlineUsers.component';
+import Categories from '../Categories';
 
 export default {
 	component: OnlineUsers,
-	title: 'OnlineUsers',
+	title: `${Categories.TOPBAR}/Online Users`,
 	excludeStories: /.*Data$/,
 };
 

@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
-import Notification from '../components/Notification.component';
+import Notification from '../../components/topbar/Notification.component';
+import Categories from '../Categories';
 
 export default {
 	component: Notification,
-	title: 'Notification',
+	title: `${Categories.TOPBAR}/Notification`,
 	excludeStories: /.*Data$/,
 };
 

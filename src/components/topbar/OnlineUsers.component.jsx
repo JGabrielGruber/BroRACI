@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import AccountAvatar from './AccountAvatar.component';
-import User from '../models/User.model';
+import User from '../../models/User.model';
 
 const useStyles = makeStyles(() => ({
 	root: {

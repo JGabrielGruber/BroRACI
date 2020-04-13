@@ -7,7 +7,7 @@ import {
 import DeleteIcon from '@material-ui/icons/Delete';
 
 import User from '../../models/User.model';
-import AccountAvatar from '../AccountAvatar.component';
+import AccountAvatar from '../topbar/AccountAvatar.component';
 
 class UserItem extends React.Component {
 	constructor(props) {

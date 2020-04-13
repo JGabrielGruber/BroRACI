@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 
 import User from '../../models/User.model';
-import AccountAvatar from '../AccountAvatar.component';
+import AccountAvatar from '../topbar/AccountAvatar.component';
 
 function UserAssignmentItem({
 	user,

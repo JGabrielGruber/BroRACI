@@ -6,7 +6,7 @@ import {
 } from '@material-ui/core';
 import MoreHorizRoundedIcon from '@material-ui/icons/MoreHorizRounded';
 
-import AccountAvatar from '../AccountAvatar.component';
+import AccountAvatar from '../topbar/AccountAvatar.component';
 import Assignment from '../../models/Assignment.model';
 import Rule from '../../models/Rule.model';
 import User from '../../models/User.model';
