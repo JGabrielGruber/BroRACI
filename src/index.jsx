@@ -1,16 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import firebase from 'firebase';
-
 import Root from './components/Root.component';
 import * as serviceWorker from './serviceWorker';
-import { firebaseConfig } from './.config';
+import initializeFirebase from './configFirebase';
 
-firebase.initializeApp({
-	...firebaseConfig,
-	apiKey: process.env.REACT_APP_APIKEY,
-});
+initializeFirebase();
 
 ReactDOM.render(
 	<Root />,
