@@ -14,7 +14,7 @@ export default {
 
 export const ruleData = {
 	uid: 'aaa',
-	title: 'Responsável',
+	name: 'Responsável',
 };
 
 export const usersData = [

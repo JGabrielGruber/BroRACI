@@ -12,6 +12,7 @@ import AddIcon from '@material-ui/icons/Add';
 import UserModel from '../../models/User.model';
 import Rule from '../../models/Rule.model';
 import UserAssignmentItem from './UserAssignmentItem.component';
+import Assignment from '../../models/Assignment.model';
 
 class UserAssignmentControl extends React.Component {
 	constructor(props) {
@@ -22,6 +23,19 @@ class UserAssignmentControl extends React.Component {
 			isAdd: false,
 			element: null,
 		};
+	}
+
+	getUsers() {
+		const { assignments, rule } = this.props;
+		let assignment;
+		const list = [];
+		for (let i = 0; i < assignments.length; i += 1) {
+			assignment = assignments[i];
+			if (assignment.rules.find((item) => item.uid === rule.uid)) {
+				list.push(assignment.user);
+			}
+		}
+		return list;
 	}
 
 	handlePopover = (event) => {
@@ -88,7 +102,7 @@ class UserAssignmentControl extends React.Component {
 							<Grid container direction="row" justify="space-between" alignItems="center">
 								<Grid item>
 									<Typography variant="body2" color="textSecondary">
-										{`${rule.title}`}
+										{`${rule.name}`}
 									</Typography>
 								</Grid>
 								<Grid item>
@@ -102,7 +116,7 @@ class UserAssignmentControl extends React.Component {
 					<Grid item>
 						<List>
 							{
-								users.map((user) => (
+								this.getUsers().map((user) => (
 									<ListItem
 										button={!isChange}
 										key={user.uid}
@@ -128,7 +142,7 @@ class UserAssignmentControl extends React.Component {
 											fullWidth
 										>
 											<Typography variant="body2">
-												{`Adicionar ${rule.title}`}
+												{`Adicionar ${rule.name}`}
 											</Typography>
 										</Button>
 									</Grid>
@@ -143,7 +157,7 @@ class UserAssignmentControl extends React.Component {
 							<List>
 								{
 									users.map((user) => (
-										<ListItem button onClick={(e) => this.handleAdd(user)}>
+										<ListItem button onClick={() => this.handleAdd(user)}>
 											<ListItemText primary={user.displayName} secondary={user.role ? user.role.title : ''} />
 										</ListItem>
 									))
@@ -162,6 +176,7 @@ UserAssignmentControl.defaultProps = {
 };
 
 UserAssignmentControl.propsType = {
+	assignments: PropTypes.arrayOf(PropTypes.shape(Assignment)).isRequired,
 	rule: PropTypes.shape(Rule).isRequired,
 	users: PropTypes.arrayOf(PropTypes.shape(UserModel)),
 	onAdd: PropTypes.func,
