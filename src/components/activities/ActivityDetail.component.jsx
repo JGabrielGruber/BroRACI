@@ -26,7 +26,7 @@ class ActivityDetail extends React.Component {
 	handleChange = (event) => {
 		if (event.keyCode !== 13) {
 			this.setState({
-				[event.target.id]: event.target.value + event.key,
+				[event.target.id]: event.target.value,
 			});
 		} else {
 			this.handleUpdate(event);
@@ -48,10 +48,10 @@ class ActivityDetail extends React.Component {
 		event.persist();
 		event.preventDefault();
 		const {
-			onUpdate,
+			activity, onUpdate,
 		} = this.props;
 		if (event.keyCode === 13) {
-			onUpdate({ [event.target.id]: this.state[event.target.id] });
+			onUpdate(activity, { [event.target.id]: this.state[event.target.id] });
 		}
 	}
 
@@ -103,7 +103,8 @@ class ActivityDetail extends React.Component {
 														fullWidth
 														value={title}
 														label="Título"
-														onKeyUp={this.handleChange}
+														onChange={this.handleChange}
+														onKeyUp={this.handleUpdate}
 													/>
 												) : (
 													<Typography variant="h5">
