@@ -1,10 +1,9 @@
 import React from 'react';
+import AppContainer from '../containers/App.container';
 
 function Root() {
 	return (
-		<h1>
-			Hello World!
-		</h1>
+		<AppContainer />
 	);
 }
 
