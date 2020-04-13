@@ -26,5 +26,8 @@ export default {
 			return false;
 		}
 	},
+	logout: async () => {
+		await firebase.auth().signOut();
+	},
 	get: async () => firebase.auth().currentUser,
 };

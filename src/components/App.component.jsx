@@ -31,10 +31,6 @@ class App extends React.Component {
 		console.log(event);
 	}
 
-	accountExitHandler = (event) => {
-		console.log(event);
-	}
-
 	accountMenuHandler = (event) => {
 		event.persist();
 		this.setState((prevState) => ({
@@ -116,7 +112,7 @@ class App extends React.Component {
 		} = this.state;
 		const {
 			user, amountNotification, matrices, notifications, stateLogin, raci,
-			onLogin,
+			onLogout,
 		} = this.props;
 
 		return (
@@ -139,7 +135,7 @@ class App extends React.Component {
 					open={isAccountMenuOpen}
 					onAccount={this.accountHandler}
 					onClose={this.accountMenuHandler}
-					onExit={this.accountExitHandler}
+					onExit={onLogout}
 				/>
 				<NotificationMenu
 					element={notiticationMenuElement}
@@ -199,6 +195,7 @@ App.propTypes = {
 	raci: PropTypes.shape(RACI),
 	onLogin: PropTypes.func.isRequired,
 	onSignup: PropTypes.func.isRequired,
+	onLogout:  PropTypes.func.isRequired,
 };
 
 export default App;
