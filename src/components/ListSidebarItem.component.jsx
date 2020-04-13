@@ -21,7 +21,7 @@ export default function ListSidebarItem({
 				</ListSubheader>
 			) : (<div />)}
 		>
-			{items.map((item) => <SidebarItem item={item} />) }
+			{items.map((item) => <SidebarItem item={item} onClick={() => onClick(item)} />) }
 		</List>
 	);
 }
