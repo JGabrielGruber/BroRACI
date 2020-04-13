@@ -1,0 +1,24 @@
+name: Deploy BroRACI
+
+on:
+  pull_request:
+    branches: [ master ]
+
+#on:
+#  push:
+#    branches: [ master ]
+#  pull_request:
+#    branches: [ master ]
+
+jobs:
+  build-and-deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+        env:
+          REACT_APP_APIKEY: ${{ secrets.FIREBASE_API_KEY }}
