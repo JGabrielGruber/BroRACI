@@ -1,14 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Route, Switch } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
 
-import Root from './components/Root.component';
 import * as serviceWorker from './serviceWorker';
 import initializeFirebase from './configFirebase';
+import AppContainer from './containers/App.container';
 
 initializeFirebase();
 
 ReactDOM.render(
-	<Root />,
+	<BrowserRouter>
+		<Switch>
+			<Route path="/:raci?" component={AppContainer} />
+		</Switch>
+	</BrowserRouter>,
 	document.getElementById('root'),
 );
 
