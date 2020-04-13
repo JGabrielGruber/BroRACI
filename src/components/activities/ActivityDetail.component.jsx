@@ -51,7 +51,7 @@ class ActivityDetail extends React.Component {
 			activity, onUpdate,
 		} = this.props;
 		if (event.keyCode === 13) {
-			onUpdate(activity, { [event.target.id]: this.state[event.target.id] });
+			onUpdate({ ...activity, [event.target.id]: this.state[event.target.id] });
 		}
 	}
 

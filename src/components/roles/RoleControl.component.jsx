@@ -19,6 +19,7 @@ class RoleControl extends React.Component {
 		this.state = {
 			isAdd: false,
 			title: '',
+			selectedRole: null,
 		};
 	}
 
@@ -32,6 +33,24 @@ class RoleControl extends React.Component {
 		this.setState({
 			[event.target.id]: event.target.value,
 		});
+	}
+
+	handleOver = (role) => {
+		this.setState({
+			selectedRole: role,
+		});
+	}
+
+	handleSelectGroup = (group) => {
+		const {
+			selectedRole
+		} = this.state;
+
+		const {
+			onSelectGroup,
+		} = this.props;
+
+		onSelectGroup(group, selectedRole);
 	}
 
 	render() {
@@ -64,7 +83,8 @@ class RoleControl extends React.Component {
 									onRemove={onRemove}
 									onAddGroup={onAddGroup}
 									onRemoveGroup={onRemoveGroup}
-									onSelectGroup={onSelectGroup}
+									onSelectGroup={this.handleSelectGroup}
+									onOver={this.handleOver}
 								/>
 							</Grid>
 						))
@@ -84,7 +104,7 @@ class RoleControl extends React.Component {
 													<IconButton onClick={this.handleAddRole}>
 														<ClearRounded />
 													</IconButton>
-													<IconButton onClick={() => onAdd(title)}>
+													<IconButton onClick={() => onAdd({ title })}>
 														<DoneRoundedIcon />
 													</IconButton>
 												</InputAdornment>

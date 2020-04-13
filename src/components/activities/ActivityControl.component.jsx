@@ -46,14 +46,15 @@ class ActivityControl extends React.Component {
 		} = this.state;
 
 		const {
-			activities, rules, steps,
+			activities, rules, steps, users,
 			onAddStep, onRemoveStep, onSelectStep,
+			onUpdate,
 		} = this.props;
 
 		return (
 			<Container>
 				<Grid container>
-					<Grid item>
+					<Grid item md>
 						<List>
 							{ activities.map((activity, index) => (
 								<ListItem key={activity.uid}>
@@ -97,6 +98,14 @@ class ActivityControl extends React.Component {
 							rules={rules}
 							steps={steps}
 							onClose={this.handleClose}
+							users={users}
+							onUpdate={onUpdate}
+							onAddAssignment={null}
+							onRemoveAssignment={null}
+							onSelectAssignment={null}
+							onAddStep={onAddStep}
+							onRemoveStep={onRemoveStep}
+							onSelectStep={onSelectStep}
 						/>
 					</Grid>
 				</Grid>

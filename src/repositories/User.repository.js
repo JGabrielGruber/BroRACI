@@ -47,4 +47,18 @@ export default {
 		});
 		return u;
 	}),
+	sync: async (key, onChange) => db.collection(collection).onSnapshot((snap) => {
+		const list = [];
+		snap.forEach((item) => list.push({
+			...item.data(),
+			uid: item.id,
+		}));
+		onChange(key, list);
+	}),
+	syncById: async (key, onChange, id) => db.collection(collection).doc(id).onSnapshot((snap) => {
+		onChange(key, {
+			...snap.data(),
+			uid: snap.id,
+		});
+	}),
 };

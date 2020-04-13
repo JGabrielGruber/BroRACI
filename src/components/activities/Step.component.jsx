@@ -124,7 +124,7 @@ class Step extends React.Component {
 															<IconButton onClick={this.handleAdd}>
 																<ClearRoundedIcon />
 															</IconButton>
-															<IconButton onClick={() => onAdd(title)}>
+															<IconButton onClick={() => onAdd({ title })}>
 																<DoneRoundedIcon />
 															</IconButton>
 														</InputAdornment>

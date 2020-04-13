@@ -13,6 +13,8 @@ import RecoveryComponent from './popups/Recovery.component';
 import RACI from '../models/RACI.model';
 import UserControl from './users/UserControl.component';
 import UserControlContainer from '../containers/UserControlContainer.container';
+import RolerControlContainer from '../containers/RoleControl.container';
+import ActivityControlContainer from '../containers/ActivityControl.container';
 
 class App extends React.Component {
 	constructor(props) {
@@ -135,9 +137,11 @@ class App extends React.Component {
 					</Grid>
 					<Grid item>
 						<Switch>
-							<Route strict path="/:id/users">
+							<Route strict path="/:raci/users">
 								<UserControlContainer users={raci.users} raci={raci} />
 							</Route>
+							<Route strict path="/:raci/roles" component={RolerControlContainer} />
+							<Route strict path="/:raci/activities" component={ActivityControlContainer} />
 						</Switch>
 					</Grid>
 				</Grid>

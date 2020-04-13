@@ -21,11 +21,13 @@ export default function ActivityItem({
 	index,
 }) {
 	const handleSelectStep = (step) => {
+		console.log("AAAAAAAAA");
+		
 		onSelectStep(activity, step);
 	};
 
 	return (
-		<Container maxWidth="md">
+		<Container maxWidth="lg">
 			<Grid container direction="row" spacing={3} alignItems="center">
 				<Grid item>
 					<Step
@@ -36,7 +38,7 @@ export default function ActivityItem({
 						onSelect={handleSelectStep}
 					/>
 				</Grid>
-				<Grid item xs>
+				<Grid item lg>
 					<Button style={{ textTransform: 'none' }} fullWidth onClick={() => onClick(activity)}>
 						<Container>
 							<Grid container justify="space-between" alignItems="center">

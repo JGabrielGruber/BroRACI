@@ -20,6 +20,14 @@ class RoleItem extends React.Component {
 	}
 
 	handleMouseOver = () => {
+		const {
+			onOver, role,
+		} = this.props;
+
+		if (onOver) {
+			onOver(role);
+		}
+
 		this.setState({
 			show: true,
 		});
@@ -90,6 +98,7 @@ RoleItem.propTypes = {
 	onAddGroup: PropTypes.func.isRequired,
 	onRemoveGroup: PropTypes.func.isRequired,
 	onSelectGroup: PropTypes.func.isRequired,
+	onOver: PropTypes.func,
 };
 
 export default RoleItem;
