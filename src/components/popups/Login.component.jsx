@@ -75,7 +75,7 @@ class Login extends React.Component {
 				}}
 			>
 				<Fade in={open}>
-					<Grid id="back-grid" container justify="center" alignItems="center" className={classes.root} onClick={this.handleClose}>
+					<Grid id="back-grid" container justify="center" alignItems="center" className={classes.root}>
 						<Container maxWidth="xs">
 							<Card>
 								<CardHeader

@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
-import AccountMenu from '../components/AccountMenu.component';
+import AccountMenu from '../../components/topbar/AccountMenu.component';
+import Categories from '../Categories';
 
 export default {
 	component: AccountMenu,
-	title: 'AccountMenu',
+	title: `${Categories.TOPBAR}/Account Menu`,
 	excludeStories: /.*Data$/,
 };
 

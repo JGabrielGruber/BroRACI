@@ -2,11 +2,12 @@ import React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { action } from '@storybook/addon-actions';
 
-import AccountAvatar from '../components/AccountAvatar.component';
+import AccountAvatar from '../../components/topbar/AccountAvatar.component';
+import Categories from '../Categories';
 
 export default {
 	component: AccountAvatar,
-	title: 'AccountAvatar',
+	title: `${Categories.TOPBAR}/Account Avatar`,
 	excludeStories: /.*Data$/,
 };
 
