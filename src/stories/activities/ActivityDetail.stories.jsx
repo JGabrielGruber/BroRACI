@@ -5,6 +5,7 @@ import { action } from '@storybook/addon-actions';
 import Categories from '../Categories';
 import ActivityDetail from '../../components/activities/ActivityDetail.component';
 import { assignmentsData, rulesData } from './UserGroup.stories';
+import { stepsData } from './Step.stories';
 
 export default {
 	component: ActivityDetail,
@@ -42,8 +43,10 @@ export const actionsData = {
 
 export const Default = () => (
 	<ActivityDetail
+		open
 		activity={activityData}
 		rules={rulesData}
+		steps={stepsData}
 		users={usersData}
 		{...actionsData}
 	/>
