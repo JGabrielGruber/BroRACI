@@ -24,6 +24,9 @@ class ActivityDetail extends React.Component {
 	}
 
 	handleChange = (event) => {
+		event.persist();
+		console.log(event);
+
 		if (event.keyCode !== 13) {
 			this.setState({
 				[event.target.id]: event.target.value,
@@ -50,9 +53,7 @@ class ActivityDetail extends React.Component {
 		const {
 			activity, onUpdate,
 		} = this.props;
-		if (event.keyCode === 13) {
-			onUpdate({ ...activity, [event.target.id]: this.state[event.target.id] });
-		}
+		onUpdate({ ...activity, [event.target.id]: this.state[event.target.id] });
 	}
 
 	handleSelectStep = (step) => {
@@ -98,14 +99,15 @@ class ActivityDetail extends React.Component {
 										<Container>
 											{
 												isChange ? (
-													<TextField
-														id="title"
-														fullWidth
-														value={title}
-														label="Título"
-														onChange={this.handleChange}
-														onKeyUp={this.handleUpdate}
-													/>
+													<form id="title" onSubmit={this.handleUpdate}>
+														<TextField
+															id="title"
+															fullWidth
+															value={title}
+															label="Título"
+															onChange={this.handleChange}
+														/>
+													</form>
 												) : (
 													<Typography variant="h5">
 														{`${activity.title}`}
@@ -116,14 +118,17 @@ class ActivityDetail extends React.Component {
 										<Container>
 											{
 												isChange ? (
-													<TextField
-														id="description"
-														multiline
-														fullWidth
-														value={description}
-														label="Descrição"
-														onKeyUp={this.handleChange}
-													/>
+													<form id="description" onSubmit={this.handleUpdate}>
+														<TextField
+															id="description"
+															multiline
+															fullWidth
+															value={description}
+															label="Descrição"
+															onKeyPress={this.handleUpdate}
+															onChange={this.handleChange}
+														/>
+													</form>
 												) : (
 													<Typography variant="body2">
 														{`${activity.description ? activity.description : ''}`}

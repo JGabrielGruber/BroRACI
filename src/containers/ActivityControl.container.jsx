@@ -66,15 +66,19 @@ class ActivityControlContainer extends React.Component {
 		});
 	}
 
-	handleAdd = async (data) => {
+	handleUpdate = async (data) => {
 		const {
 			raci,
 		} = this.state;
 
-		ActivityRepository.add(data).then((item) => {
-			raci.activities.push(item.ref);
-			RACIRepository.update(raci);
-		});
+		if (data.uid) {
+			ActivityRepository.update(data);
+		} else {
+			ActivityRepository.add(data).then((item) => {
+				raci.activities.push(item.ref);
+				RACIRepository.update(raci);
+			});
+		}
 	}
 
 	handleRemove = async (data) => {
@@ -92,7 +96,7 @@ class ActivityControlContainer extends React.Component {
 	handleSelectStep = async (acitivity, step) => {
 		StepRepository.getById(step.uid).then((item) => {
 			if (item) {
-				acitivity.step = {...item.data(), uid: item.id };
+				acitivity.step = { ...item.data(), uid: item.id };
 				ActivityRepository.update(acitivity);
 			}
 		});
@@ -109,7 +113,7 @@ class ActivityControlContainer extends React.Component {
 				rules={rules}
 				steps={steps}
 				users={users}
-				onUpdate={this.handleAdd}
+				onUpdate={this.handleUpdate}
 				onAddStep={this.handleAddStep}
 				onSelectStep={this.handleSelectStep}
 			/>
