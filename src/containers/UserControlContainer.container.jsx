@@ -58,7 +58,10 @@ class UserControlContainer extends React.Component {
 		});
 		if (users) {
 			users.forEach(
-				async (user, index) => { users[index].role = (await user.role.get()).data(); },
+				async (user, index) => {
+					users[index].role = user.role && user.role.get
+						? (await user.role.get()).data() : user.role;
+				},
 			);
 		}
 	}
@@ -69,7 +72,7 @@ class UserControlContainer extends React.Component {
 		} = this.state;
 		return UserRepository.getByEmail(data.email).then((user) => {
 			if (user) {
-				raci.users.push(user);
+				raci.users.push(user.ref);
 				RACIRepository.update(raci);
 				return true;
 			}

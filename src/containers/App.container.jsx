@@ -31,7 +31,7 @@ class AppContainer extends React.Component {
 				user,
 			});
 			UserRepository.getByEmail(user.email).then((u) => {
-				RACIRepository.syncByUser('matrices', this.handleChange, u);
+				RACIRepository.syncByUser('matrices', this.handleChange, u.ref);
 			});
 		});
 		if (match.params.raci) {
