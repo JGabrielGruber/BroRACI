@@ -43,7 +43,7 @@ export default {
 	getByEmail: async (email) => db.collection(collection).where('email', '==', email).get().then((qSnap) => {
 		let u = null;
 		qSnap.forEach((snap) => {
-			u = snap.data();
+			u = snap;
 		});
 		return u;
 	}),
