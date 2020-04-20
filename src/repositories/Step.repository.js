@@ -1,11 +1,16 @@
+import firebase from 'firebase';
 import { db } from '../configFirebase';
 
 const collection = 'steps';
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 export default {
-	add: async (data) => (await db.collection(collection).add(data)).get().then((item) => item),
+	add: async (data) => (await db.collection(collection).add({
+		...data,
+		timestamp: timestamp(),
+	})).get().then((item) => item),
 	get: async () => db.collection(collection).get(),
-	sync: async (key, onChange) => db.collection(collection).onSnapshot((snap) => {
+	sync: async (key, onChange) => db.collection(collection).orderBy('timestamp').onSnapshot((snap) => {
 		const list = [];
 		snap.forEach((item) => list.push({
 			...item.data(),
