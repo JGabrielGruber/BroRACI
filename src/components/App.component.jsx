@@ -133,7 +133,7 @@ class App extends React.Component {
 			isSignupPopupOpen, isRecoveryPopupOpen,
 		} = this.state;
 		const {
-			user, amountNotification, matrices, notifications, stateLogin, raci,
+			user, amountNotification, matrices, users, notifications, stateLogin, raci,
 			onLogout,
 		} = this.props;
 
@@ -146,7 +146,7 @@ class App extends React.Component {
 							amountNotifications={amountNotification}
 							stateLogin={stateLogin}
 							title={raci.title}
-							users={raci.users}
+							users={users}
 							onAccount={this.accountMenuHandler}
 							onLogin={this.loginHandler}
 							onNotification={this.notificationMenuHandler}
@@ -156,9 +156,7 @@ class App extends React.Component {
 					</Grid>
 					<Grid item>
 						<Switch>
-							<Route strict path="/:raci/users">
-								<UserControlContainer users={raci.users} raci={raci} />
-							</Route>
+							<Route strict path="/:raci/users" component={UserControlContainer} />
 							<Route strict path="/:raci/roles" component={RolerControlContainer} />
 							<Route strict path="/:raci/activities" component={ActivityControlContainer} />
 						</Switch>

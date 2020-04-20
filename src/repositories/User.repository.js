@@ -61,4 +61,7 @@ export default {
 			uid: snap.id,
 		});
 	}),
+	update: async (data) => db.collection(collection).doc(data.uid).set({
+		...data,
+	}),
 };

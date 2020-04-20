@@ -8,6 +8,7 @@ import AddIcon from '@material-ui/icons/Add';
 import User from '../../models/User.model';
 import UserItem from './UserItem.component';
 import AddMemberComponent from '../popups/AddMember.component';
+import Role from '../../models/Role.model';
 
 class UserControl extends React.Component {
 	constructor(props) {
@@ -25,11 +26,11 @@ class UserControl extends React.Component {
 
 	render() {
 		const {
-			isAddMemberOpen
+			isAddMemberOpen,
 		} = this.state;
 
 		const {
-			users, onAdd, onRemove,
+			users, roles, onAdd, onRemove, onSelectRole,
 		} = this.props;
 
 		return (
@@ -45,8 +46,13 @@ class UserControl extends React.Component {
 					</Grid>
 					{
 						users.map((user) => (
-							<Grid item>
-								<UserItem user={user} onRemove={onRemove} />
+							<Grid item key={user.uid}>
+								<UserItem
+									user={user}
+									roles={roles}
+									onRemove={onRemove}
+									onSelectRole={onSelectRole}
+								/>
 							</Grid>
 						))
 					}
@@ -71,13 +77,17 @@ class UserControl extends React.Component {
 
 UserControl.defaultProps = {
 	users: [],
+	roles: [],
 	onRemove: () => {},
+	onSelectRole: () => {},
 };
 
 UserControl.propTypes = {
 	users: PropTypes.arrayOf(PropTypes.shape(User)),
+	roles: PropTypes.arrayOf(PropTypes.shape(Role)),
 	onAdd: PropTypes.func.isRequired,
 	onRemove: PropTypes.func,
+	onSelectRole: PropTypes.func,
 };
 
 export default UserControl;

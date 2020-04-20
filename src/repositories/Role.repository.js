@@ -10,7 +10,7 @@ export default {
 		snap.forEach((item) => list.push(item.data()));
 		onChange(key, list);
 	}),
-	getById: async (id) => (await db.collection(collection).doc(id).get()).data(),
+	getById: async (id) => db.collection(collection).doc(id).get(),
 	syncById: async (key, onChange, id) => db.collection(collection).doc(id).onSnapshot((snap) => {
 		onChange(key, {
 			...snap.data(),

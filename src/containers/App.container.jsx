@@ -16,6 +16,7 @@ class AppContainer extends React.Component {
 			user: null,
 			raci: undefined,
 			matrices: [],
+			users: [],
 		};
 	}
 
@@ -34,7 +35,17 @@ class AppContainer extends React.Component {
 			});
 		});
 		if (match.params.raci) {
-			RACIRepository.syncById('raci', this.handleChange, match.params.raci);
+			RACIRepository.syncById('raci', (key, value) => {
+				this.handleChange(key, value);
+				const {
+					raci,
+				} = this.state;
+				if (raci) {
+					raci.users.map(
+						(user, index) => UserRepository.syncById(index, this.handleChangeUser, user.id),
+					);
+				}
+			}, match.params.raci);
 		}
 	}
 
@@ -44,9 +55,19 @@ class AppContainer extends React.Component {
 		});
 	}
 
+	handleChangeUser = (key, value) => {
+		const {
+			users,
+		} = this.state;
+		users[key] = value || undefined;
+		this.setState({
+			users,
+		});
+	}
+
 	render() {
 		const {
-			stateLogin, user, raci, matrices,
+			stateLogin, user, raci, matrices, users,
 		} = this.state;
 
 		return (
@@ -55,6 +76,7 @@ class AppContainer extends React.Component {
 				user={user}
 				raci={raci}
 				matrices={matrices}
+				users={users}
 				onLogin={UserRepository.login}
 				onSignup={UserRepository.signup}
 				onLogout={UserRepository.logout}
