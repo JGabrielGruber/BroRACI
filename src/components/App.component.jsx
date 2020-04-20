@@ -39,6 +39,14 @@ class App extends React.Component {
 		console.log(event);
 	}
 
+	matricesHandler = (raci) => {
+		const {
+			history,
+		} = this.props;
+		history.push(`/${raci.uid}/`);
+		window.location.reload(false);
+	}
+
 	accountMenuHandler = (event) => {
 		event.persist();
 		this.setState((prevState) => ({
@@ -161,6 +169,7 @@ class App extends React.Component {
 					matrices={matrices}
 					open={isAccountMenuOpen}
 					onAccount={this.accountHandler}
+					onClick={this.matricesHandler}
 					onClose={this.accountMenuHandler}
 					onExit={onLogout}
 				/>
@@ -238,10 +247,7 @@ App.defaultProps = {
 App.propTypes = {
 	user: PropTypes.shape(User),
 	amountNotification: PropTypes.number,
-	matrices: PropTypes.arrayOf(PropTypes.shape({
-		uid: PropTypes.string.isRequired,
-		title: PropTypes.string.isRequired,
-	})),
+	matrices: PropTypes.arrayOf(PropTypes.shape(RACI)),
 	notifications: PropTypes.arrayOf(PropTypes.shape({
 		uid: PropTypes.string.isRequired,
 		title: PropTypes.string.isRequired,

@@ -5,6 +5,7 @@ import App from '../components/App.component';
 
 import UserRepository from '../repositories/User.repository';
 import RACIRepository from '../repositories/RACI.repository';
+import RACI from '../models/RACI.model';
 
 class AppContainer extends React.Component {
 	constructor(props) {
@@ -14,6 +15,7 @@ class AppContainer extends React.Component {
 			stateLogin: 'NOT_LOGGED',
 			user: null,
 			raci: undefined,
+			matrices: [],
 		};
 	}
 
@@ -26,6 +28,9 @@ class AppContainer extends React.Component {
 			this.setState({
 				stateLogin: user ? 'LOGGED' : 'NOT_LOGGED',
 				user,
+			});
+			UserRepository.getByEmail(user.email).then((u) => {
+				RACIRepository.syncByUser('matrices', this.handleChange, u);
 			});
 		});
 		if (match.params.raci) {
@@ -41,7 +46,7 @@ class AppContainer extends React.Component {
 
 	render() {
 		const {
-			stateLogin, user, raci,
+			stateLogin, user, raci, matrices,
 		} = this.state;
 
 		return (
@@ -49,6 +54,7 @@ class AppContainer extends React.Component {
 				stateLogin={stateLogin}
 				user={user}
 				raci={raci}
+				matrices={matrices}
 				onLogin={UserRepository.login}
 				onSignup={UserRepository.signup}
 				onLogout={UserRepository.logout}

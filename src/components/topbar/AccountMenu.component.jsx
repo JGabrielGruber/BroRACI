@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {
 	Menu, MenuItem, Divider,
 } from '@material-ui/core';
+import RACI from '../../models/RACI.model';
 
 class AccountMenu extends React.Component {
 	constructor(props) {
@@ -20,9 +21,8 @@ class AccountMenu extends React.Component {
 	}
 
 	render() {
-		const { matrices } = this.state;
 		const {
-			element, onClose, onAccount, onExit, onClick, open,
+			element, matrices, onClose, onAccount, onExit, onClick, open,
 		} = this.props;
 
 		return (
@@ -48,7 +48,7 @@ class AccountMenu extends React.Component {
 						{ matrices.map((project) => (
 							<MenuItem
 								key={project.uid}
-								onClick={onClick}
+								onClick={() => onClick(project)}
 							>
 								{project.title}
 							</MenuItem>
@@ -78,10 +78,7 @@ AccountMenu.propTypes = {
 	onClick: PropTypes.func,
 	open: PropTypes.bool,
 	// eslint-disable-next-line react/no-unused-prop-types
-	matrices: PropTypes.arrayOf(PropTypes.shape({
-		uid: PropTypes.string.isRequired,
-		title: PropTypes.string.isRequired,
-	})),
+	matrices: PropTypes.arrayOf(PropTypes.shape(RACI)),
 };
 
 export default AccountMenu;
